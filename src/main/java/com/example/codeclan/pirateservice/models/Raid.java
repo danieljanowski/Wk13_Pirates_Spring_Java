@@ -3,6 +3,7 @@ package com.example.codeclan.pirateservice.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -37,6 +38,7 @@ public class Raid {
     public Raid(String location, int loot) {
         this.location = location;
         this.loot = loot;
+        this.pirates = new ArrayList<Pirate>();
     }
 
     public Raid() {
@@ -62,7 +64,7 @@ public class Raid {
         this.loot = loot;
     }
 
-    public void add(Pirate pirate){
-        pirates.add(pirate);
+    public void addPirate(Pirate pirate){
+        this.pirates.add(pirate);
     }
 }

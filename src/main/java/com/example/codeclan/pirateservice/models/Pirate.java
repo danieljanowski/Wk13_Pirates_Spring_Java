@@ -1,6 +1,7 @@
 package com.example.codeclan.pirateservice.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -44,6 +45,7 @@ public class Pirate {
         this.lastName = lastName;
         this.age = age;
         this.ship = ship;
+        this.raids = new ArrayList<Raid>();
     }
 
     public Pirate(){
@@ -85,7 +87,7 @@ public class Pirate {
         this.age = age;
     }
 
-    public void add(Raid raid){
-        raids.add(raid);
+    public void addRaid(Raid raid){
+        this.raids.add(raid);
     }
 }
