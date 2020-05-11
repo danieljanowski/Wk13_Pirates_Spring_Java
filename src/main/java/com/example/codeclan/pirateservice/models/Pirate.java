@@ -84,4 +84,8 @@ public class Pirate {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public void add(Raid raid){
+        raids.add(raid);
+    }
 }

@@ -34,4 +34,6 @@ class PirateserviceApplicationTests {
 
 		Pirate pirate1 = new Pirate("Jack", "Sparrow", 32, ship);
 		pirateRepository.save(pirate1);
-	}}
+	}
+
+}
