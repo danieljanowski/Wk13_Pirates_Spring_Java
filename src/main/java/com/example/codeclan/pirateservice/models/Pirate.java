@@ -1,5 +1,7 @@
 package com.example.codeclan.pirateservice.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,10 @@ public class Pirate {
 
     @ManyToOne
     @JoinColumn(name="ship_id", nullable=false)
+
     private Ship ship;
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(
             name = "pirates_raids",

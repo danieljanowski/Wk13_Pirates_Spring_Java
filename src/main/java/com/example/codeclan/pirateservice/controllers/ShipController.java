@@ -1,6 +1,6 @@
 package com.example.codeclan.pirateservice.controllers;
 
-import com.example.codeclan.pirateservice.models.Pirate;
+import com.example.codeclan.pirateservice.models.Ship;
 import com.example.codeclan.pirateservice.repositories.PirateRepository;
 import com.example.codeclan.pirateservice.repositories.RaidRepository;
 import com.example.codeclan.pirateservice.repositories.ShipRepository;
@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-public class PirateController {
+public class ShipController {
 
     @Autowired
     private PirateRepository pirateRepository;
@@ -26,14 +25,15 @@ public class PirateController {
     @Autowired
     private RaidRepository raidRepository;
 
-    @GetMapping(value = "/pirates")
-    public ResponseEntity<List<Pirate>> getAllPirates() {
-        List<Pirate> foundPirates = pirateRepository.findAll();
-        return new ResponseEntity<List<Pirate>>(foundPirates, HttpStatus.OK);
+    @GetMapping(value = "/ships")
+    public ResponseEntity<List<Ship>> getAllShips() {
+        List<Ship> foundShips = shipRepository.findAll();
+        return new ResponseEntity<List<Ship>>(foundShips, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/pirate/{id}")
-    public ResponseEntity getPirate(@PathVariable Long id){
-        return new ResponseEntity<> (pirateRepository.findById(id), HttpStatus.OK);
+    @GetMapping(value = "/ship/{id}")
+    public ResponseEntity getShip(@PathVariable Long id){
+        return new ResponseEntity<>(shipRepository.findById(id), HttpStatus.OK);
     }
+
 }

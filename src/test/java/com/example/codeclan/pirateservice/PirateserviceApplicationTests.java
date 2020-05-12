@@ -4,7 +4,6 @@ import com.example.codeclan.pirateservice.models.Pirate;
 import com.example.codeclan.pirateservice.models.Raid;
 import com.example.codeclan.pirateservice.models.Ship;
 import com.example.codeclan.pirateservice.repositories.PirateRepository;
-import com.example.codeclan.pirateservice.repositories.Pirates_RaidsRepository;
 import com.example.codeclan.pirateservice.repositories.RaidRepository;
 import com.example.codeclan.pirateservice.repositories.ShipRepository;
 import org.junit.jupiter.api.Test;
@@ -23,21 +22,13 @@ class PirateserviceApplicationTests {
 	@Autowired
 	private RaidRepository raidRepository;
 
-	@Autowired
-	private Pirates_RaidsRepository pirates_raidsRepository;
-
 	@Test
 	void contextLoads() {
 	}
 
-//	@Test
-//	public void canCreateAndSavePirate(){
-//		Pirate pirate = new Pirate("Jack", "Sparrow", 32);
-//		pirateRepository.save(pirate);
-//	}
-
 	@Test
 	public void createPirateAndShip(){
+
 		Ship ship = new Ship("The Flying Dutchman");
 		shipRepository.save(ship);
 
@@ -47,6 +38,7 @@ class PirateserviceApplicationTests {
 
 	@Test
 	public void createPirateAndRaids(){
+
 		Ship ship = new Ship("The Flying Dutchman");
 		shipRepository.save(ship);
 
