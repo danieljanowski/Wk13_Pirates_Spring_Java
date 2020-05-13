@@ -10,6 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 class PirateserviceApplicationTests {
 
@@ -53,6 +57,32 @@ class PirateserviceApplicationTests {
 
 		pirate1.addRaid(raid1);
 		pirateRepository.save(pirate1);
+	}
+
+	@Test
+	public void canFindPiratesOver40(){
+		List<Pirate> foundPirates = pirateRepository.findByAgeGreaterThan(40);
+	}
+
+	@Test
+	public void canFindRaidForLocation(){
+		List<Raid> foundRaids = raidRepository.findByLocation("Tortuga");
+	}
+
+	@Test
+	public void canFindRaidByPiratesFname(){
+		List<Raid> foundRaids = raidRepository.findByPiratesFirstName("John");
+	}
+
+	@Test
+	public void canFindShipByPiratesFirstName(){
+		List<Ship> foundShips = shipRepository.findByPiratesFirstName("William");
+		assertEquals(1, foundShips.size());
+	}
+
+	@Test
+	public void canFindRaidByShipName(){
+		List<Raid> foundRaids = raidRepository.findByPiratesShipName("The Flying Dutchman");
 	}
 
 }
