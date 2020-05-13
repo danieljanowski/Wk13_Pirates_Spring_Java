@@ -25,15 +25,6 @@ public class PirateController {
     @Autowired
     private RaidRepository raidRepository;
 
-
-    /**
-     * TDDO write a countroller route for findByFirstName
-     * This controlle aloows is to do
-     * GET /pirates returning [] of all the pirates
-     * GET /pirates?firstName=John
-     */
-
-
     @GetMapping(value = "/pirates")
     public ResponseEntity<List<Pirate>> getAllPirates(
             @RequestParam(name = "firstName", required = false) String firstName,
@@ -63,6 +54,21 @@ public class PirateController {
     public ResponseEntity postPirate(@RequestBody Pirate pirate) {
         pirateRepository.save(pirate);
         return new ResponseEntity<>(pirate, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/pirates/{id}")
+    public ResponseEntity<Pirate> puPirate(@RequestBody Pirate pirate, @PathVariable Long id){
+        if (pirate.getId().longValue() != id){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        pirateRepository.save(pirate);
+        return new ResponseEntity<>(pirate, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/pirates/{id}")
+    public ResponseEntity<List<Pirate>> deletePirate(@PathVariable Long id){
+        pirateRepository.deleteById(id);
+        return new ResponseEntity<>(pirateRepository.findAll(), HttpStatus.OK);
     }
 }
 
